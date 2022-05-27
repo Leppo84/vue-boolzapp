@@ -1,0 +1,46 @@
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d7dbd7;
+    font-family: 'Lato', sans-serif;
+}
+
+.strip {
+    height: 100px;
+    background-color: #009688;
+    z-index: -10;
+}
+
+main {
+    position: absolute;
+    margin: auto;
+    top: 3vh;
+    left: 10vw;
+    width: 80vw;
+    height: 94vh;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.status {
+    background-color: #8edafc;
+}
+
+aside {
+    width: 30%;
+    min-width: 300px;
+}
+
+section.board {
+    max-width 70%;
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-image: url('../img/bg-chat.jpg');
+}
