@@ -21,7 +21,7 @@ main {
     left: 10vw;
     width: 80vw;
     height: 94vh;
-    background-color: #eaeaea;
+    background-color: #fafafa;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -50,7 +50,6 @@ section.chat-board {
 .row {
     width: 100%;
     display: flex;
-    align-items: center;
     padding: 8px;
 }
 
@@ -61,8 +60,11 @@ section.chat-board {
 }
 
 .center {
-    align-items: center;
-    
+    align-items: center;    
+}
+
+.align-start {
+    align-items: flex-start;
 }
 
 .between {
@@ -74,6 +76,19 @@ section.chat-board {
 }
 
 /* Styles rules */
+
+.txt-grey {
+    color: #727272;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.txt-lightgrey {
+    color: #909090;
+    font-size: x-small;
+}
 
 .strip {
     height: 100px;
@@ -102,14 +117,13 @@ section.chat-board {
     background-color: #8edafc;
 }
 
+.bg-grey {
+    background-color: #eaeaea;
+}
+
 .col-notif {
     color: #8edafc;
     font-size: medium;
-}
-
-.link {
-    color: #727272;
-    text-decoration: underline;
 }
 
 .searchContainer {
@@ -137,4 +151,12 @@ section.chat-board {
     height: 38px;
     border-radius: 50%;
     margin-right: 8px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.bg-active {
+    background-color: #e9ebeb;
 }
