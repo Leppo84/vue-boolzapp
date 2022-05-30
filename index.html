@@ -50,7 +50,7 @@
             <!-- contacts list -->
             <div class="scroll v-container">
                 {{allChats.avatar}}
-                <div v-for="(chat, index) in allChats" :id="chat.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" :key="index">
+                <div v-for="(chat, index) in allChats" :id="chat.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
                     <div class="box">
                         <img :src="`img/Avatar${chat.avatar}.jpg`" :alt="chat.contactName" class="avatar">
                         <div>
@@ -142,13 +142,12 @@
                     </div>
                 </div> -->
             </div>
-
         </aside>
         <!-- chat -->
         <section class="v-container chat-board">
             <div class="row j-between center bg-grey">
                 <div class="box">
-                    <img src="img/Avatar_02.jpg" alt="Your Avatar" class="avatar-sm">
+                    <img src="img/Avatar_02.jpg" alt="Tony" class="avatar-sm">
                     <div>
                         <b>Tony</b>
                         <br>
@@ -161,8 +160,17 @@
                     <i class="icon-a fas fa-ellipsis-v"></i>
                 </div>
             </div>
-            <div class="wall scroll">
-                <div class="box j-start">
+            <!-- MESSAGGI -->
+            <div v-for="(chat, j) in allChats" class="wall scroll" :key="j">
+                <div v-for="(mess, k) in chat.messages" :class="mess.statusMess === 'sent' ? 'box j-end' : 'box j-start'" class="" :key="k">
+                    <span :class="mess.statusMess === 'sent' ? 'sent-baloon' : 'received-baloon'">
+                        <span>
+                            {{mess.message}}
+                        </span>
+                        <span class="time-txt txt-lightgrey">{{mess.timeMess}}</span>
+                    </span>
+                </div>
+                <!-- <div class="box j-start">
                     <span class="received-baloon">
                         <span>
                             ciao
@@ -173,12 +181,11 @@
                 <div class="box j-end">
                     <span class="sent-baloon">
                         <span>
-                            Ciao! Come stai?
+                            Come stai?
                         </span>
                         <span class="time-txt txt-lightgrey">12,00</span>
                     </span>
-                </div>
-                    
+                </div> -->
             </div>
             <div class="row j-between center bg-grey">
                 <i class="icon-b far fa-smile"></i>
