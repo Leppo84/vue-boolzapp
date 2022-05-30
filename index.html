@@ -18,7 +18,7 @@
     <title>What's the app</title>
 </head>
 <body>
-    <main>
+    <main id="uozzap">
         <aside class="v-container">
             <div class="row j-between center bg-grey">
                 <div class="box">
@@ -44,26 +44,26 @@
             <div class="row border-bottom">
                 <div class="bar-container ">
                     <i class="fa fa-search searchIcon"></i>
-                    <input class="searchBox" type="search" name="search" placeholder="Cerca o inizia una nuova chat">
+                    <input id="search-bar" type="search" name="search" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
             <!-- contacts list -->
             <div class="scroll v-container">
-
-                <div class="row j-between bg-active">
+                {{allChats.avatar}}
+                <div v-for="(chat, index) in allChats" :id="chat.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" :key="index">
                     <div class="box">
-                        <img src="img/Avatar_02.jpg" alt="Your Avatar" class="avatar">
+                        <img :src="`img/Avatar${chat.avatar}.jpg`" :alt="chat.contactName" class="avatar">
                         <div>
-                            <b>Tony</b>
+                            <b>{{chat.contactName}}</b>
                             <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
+                            <span v-for="chat in allChats.messages" class="txt-lightgrey">{{chat.messages}}</span>
                         </div>
                     </div>
                     <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
+                        <span class="txt-lightgrey">ore 12:00</span>
                     </div>
                 </div>
-                <div class="row j-between border-bottom">
+                <!-- <div class="row j-between border-bottom">
                     <div class="box">
                         <img src="img/Avatar_03.jpg" alt="Your Avatar" class="avatar">
                         <div>
@@ -140,8 +140,9 @@
                     <div class="box align-start ">
                         <span class="txt-lightgrey">ore 12,00</span>
                     </div>
-                </div>
+                </div> -->
             </div>
+
         </aside>
         <!-- chat -->
         <section class="v-container chat-board">
@@ -163,13 +164,18 @@
             <div class="wall scroll">
                 <div class="box j-start">
                     <span class="received-baloon">
-                        ciao
+                        <span>
+                            ciao
+                        </span>
+                        <span class="time-txt txt-lightgrey">12,00</span>
                     </span>
-                    
                 </div>
                 <div class="box j-end">
-                    <span class="send-baloon">
-                        Ciao!
+                    <span class="sent-baloon">
+                        <span>
+                            Ciao! Come stai?
+                        </span>
+                        <span class="time-txt txt-lightgrey">12,00</span>
                     </span>
                 </div>
                     
@@ -177,7 +183,7 @@
             <div class="row j-between center bg-grey">
                 <i class="icon-b far fa-smile"></i>
                 <div class="bar-container ">
-                    <input id="message-box" type="text" name="text" placeholder="Scrivi il tuo messaggio">
+                    <input id="message-bar" type="text" name="text" placeholder="Scrivi un messaggio">
                 </div>
                 <i class="icon-b fas fa-microphone"></i>
             </div>

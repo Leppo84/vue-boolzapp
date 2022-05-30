@@ -180,7 +180,7 @@ section.chat-board {
     color: #b1b1b1;
 }
 
-.searchBox {
+#search-bar {
     border: 0;
     padding: 4px;
     flex: 1;
@@ -204,23 +204,30 @@ section.chat-board {
 
 .received-baloon {
     display: block;
-    padding: 10px 14px;
+    width: 40%;
+    padding: 10px 40px 14px 14px;
     border-radius: 8px;
     background-color: #ffffff;
 }
 
-.send-baloon {
+.sent-baloon {
     display: block;
-    padding: 10px 14px;
+    width: 40%;
+    padding: 10px 40px 14px 14px;
     border-radius: 8px;
     border-top-right-radius: 0px;
     background-color: #d5f9ba;
 }
 
-#message-box {
+#message-bar {
     border: 0;
     padding: 6px;
-
     flex: 1;
     border-radius: 5px;
+}
+
+.time-txt {
+    display: block;
+    text-align: end;
+    margin: -6px -28px;
 }
