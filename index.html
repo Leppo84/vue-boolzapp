@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <!-- MESSAGGI -->
-                <div  class="wall scroll v-container">
+                <div id="wall" class="scroll v-container">
                     <div v-for="(mess, k) in chat.messages" :class="mess.statusMess === 'sent' ? 'box j-end' : 'box j-start'" class="" :key="k">
                         <span :class="mess.statusMess === 'sent' ? 'sent-baloon' : 'received-baloon'">
                             <span>

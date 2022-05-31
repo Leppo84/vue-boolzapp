@@ -225,6 +225,9 @@ const wazzuppo = new Vue ({
             setTimeout(() => {
 
                 this.allChats[position].messages.push(botAnswer);
+
+                const scroll = document.querySelector("#wall");
+                scroll.scrollTop = scroll.scrollHeight;                
                 
             }, 3000);
             
@@ -241,13 +244,17 @@ const wazzuppo = new Vue ({
             };
             
             if (this.newMess.trim()=="") {
-                
-            } else {
+            // non esegue niente
+            }
+            else {
                 this.allChats[position].messages.push(addingMess);
                 // this.newMess="";
                 this.botMess(position);
-                
             }
+
+            const scroll = document.querySelector("#wall");
+            scroll.scrollTop = scroll.scrollHeight;
+
         },
         getDate () {
             const d = new Date();
@@ -257,6 +264,7 @@ const wazzuppo = new Vue ({
         getHour () {
             const t = new Date();
             let now = t.toLocaleTimeString();
+            now = now.slice(0,5);
             return now
         },
         filterChats () {
@@ -291,6 +299,6 @@ const wazzuppo = new Vue ({
                     }
                 }
             }
-        }
+        },
     }
 });
