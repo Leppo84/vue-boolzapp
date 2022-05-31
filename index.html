@@ -115,7 +115,7 @@
                 <div class="row j-between align-center c-end bg-grey">
                     <i class="icon-b far fa-smile"></i>
                     <div class="bar-container ">
-                        <input id="message-bar" type="text" name="text" placeholder="Scrivi un messaggio">
+                        <input id="message-bar" type="text" name="text" @keyup.enter="addMess(j)" v-model="newMess" placeholder="Scrivi un messaggio">
                     </div>
                     <i class="icon-b fas fa-microphone"></i>
                 </div>

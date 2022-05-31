@@ -1,6 +1,8 @@
 const wazzuppo = new Vue ({
     el: "#uozzap",
     data: {
+        newMess : "",
+        // botAnsw : [],
         allChats : [
             {
                 contactName : "Tony",
@@ -200,8 +202,51 @@ const wazzuppo = new Vue ({
                 chat.active=false;                
             });
             this.allChats[position].active = true;
-        }
+        },
+        botMess (position) {
+            this.newMess="";
+            let botAnsw = [
+                "Forse volevi una parola palindroma: Omordotuanuoraoarounautodromo.", "Va bene...", "Mai una gioia.", "Cosa hai scritto?", "In che senso?", "Comunque è sempre colpa della lobby delle farmacie.", "Va bene Ciccio, ci becchiamo!", "42", "Ehm... forse.", "Sì, certo, ti faccio sapere.", "No, non ho sorelle o amiche da presentarti", "Mmmmhh...", "Ahahahah. No.", "Aahahahh!!!", "Ma sono giaponese!", "Ora devo andare!", "Ci sentiamo dopo!", "No", "Non credo :)", "Ok", "Vai avanti", "No ma fai pure", "Non è divertente,", "Ciao", "Ciao Giorgio", "Bene. Tu invece come stai?", "Bene anche te e famiglia"
+            ];
 
+            let ranNum = Math.floor(Math.random()*27);
+
+            console.log(botAnsw[ranNum]);
+
+            let botAnswer = {
+                dateMess : "now",
+                timeMess : "now",
+                message : botAnsw[ranNum],
+                statusMess : "received"
+            };
+
+            setTimeout(() => {
+
+                this.allChats[position].messages.push(botAnswer);
+                
+            }, 3000);
+            
+            
+        },
+        
+        addMess (position) {
+            
+            let addingMess = {
+                dateMess : "now",
+                timeMess : "now",
+                message : this.newMess,
+                statusMess : "sent"
+            };
+            
+            if (this.newMess.trim()=="") {
+                
+            } else {
+                this.allChats[position].messages.push(addingMess);
+                // this.newMess="";
+                this.botMess(position);
+                
+            }
+        }
     }
 })
 
