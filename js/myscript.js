@@ -260,48 +260,37 @@ const wazzuppo = new Vue ({
             return now
         },
         filterChats () {
-            console.log(this.searchEntry);
-            if (this.searchEntry.trim()=="") {
-                
-            }
-            else {
+            // console.log(this.searchEntry);
 
-                for (let index = 0; index < this.allChats.length; index++) {
-                    // const element = allChats[index];
+            for (let index = 0; index < this.allChats.length; index++) {
 
-                    let mydiv = document.getElementById(this.allChats[index].contactName).style.display= "none";
+                if (this.searchEntry.trim()=="") {
 
-                    let show = this.allChats[index].contactName.search(this.searchEntry);
+                    document.getElementById(this.allChats[index].contactName).style.display= "flex";
                     
-                    console.log(show);
-                    
-                    // if (show = -1) {
-                        
-                    // }
-                    // else {
-                    //     mydiv = document.getElementById(this.allChats[index].contactName).style.display= "flex";
-
-                    // }
-
-                    // .style.display= "none";
                 }
-                // console.log(element);
-                // let hidden = true;
+                else {
+                    
+                    document.getElementById(this.allChats[index].contactName).style.display= "none";
+                   
+                    let entry = this.searchEntry.toLowerCase().trim();
 
+                    let contact = this.allChats[index].contactName.toLowerCase().trim();
+                    
+                    let these = contact.includes(entry);
+                    let that = contact.search(entry);
+                    
+                    console.log(entry);
+                    console.log(contact);
+                    console.log(these, that);
+                    
+                    if (these == true | that !== -1 ) {
+
+                        document.getElementById(this.allChats[index].contactName).style.display= "flex";
+                        
+                    }
+                }
             }
         }
     }
-})
-
-// for each in cui trovo gli elementi contactName
-// aggiungo la classe hidden ai row dei contatti
-// eseguo un altro ciclo per ogni lettera del nome
-
-// string.search(searchValue)
-
-// controllo se quella lettera è nel searchEntry (index?)
-// se è contenuta almeno una lettera tolgo la classe hidden
-// se non c'è nessuna corrispondenza aggiungo la classe hidden
-// se entry torna vuoto tolgo tutte le classi hidden
-
-// created() {}
+});
