@@ -41,15 +41,16 @@
                     <span class="txt-grey underline">Attiva notifiche desktop</span>
                 </div>
             </div>
-            <div class="row border-bottom">
+            <!-- SEARCH -->
+            <div class="row">
                 <div class="bar-container">
                     <i class="fa fa-search searchIcon"></i>
-                    <input id="search-bar" type="search" name="search" placeholder="Cerca o inizia una nuova chat">
+                    <input id="search-bar" type="search" name="search" placeholder="Cerca o inizia una nuova chat" v-model="searchEntry" @keyup="filterChats()">
                 </div>
             </div>
             <!-- contacts list -->
             <div class="scroll v-container">
-                <div v-for="(contact, index) in allChats" :id="contact.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
+                <div v-for="(contact, index) in allChats" :id="contact.contactName" class="row j-between" :class="hidden === true ? 'hidden' : ''"  :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
                     
                     <div class="box align-center">
                         <img :src="`img/Avatar${contact.avatar}.jpg`" :alt="contact.contactName" class="avatar">
@@ -95,22 +96,6 @@
                             <span class="time-txt txt-lightgrey">{{mess.timeMess}}</span>
                         </span>
                     </div>
-                    <!-- <div class="box j-start">
-                        <span class="received-baloon">
-                            <span>
-                                ciao
-                            </span>
-                            <span class="time-txt txt-lightgrey">12,00</span>
-                        </span>
-                    </div>
-                    <div class="box j-end">
-                        <span class="sent-baloon">
-                            <span>
-                                Come stai?
-                            </span>
-                            <span class="time-txt txt-lightgrey">12,00</span>
-                        </span>
-                    </div> -->
                 </div>
                 <div class="row j-between align-center c-end bg-grey">
                     <i class="icon-b far fa-smile"></i>

@@ -2,6 +2,8 @@ const wazzuppo = new Vue ({
     el: "#uozzap",
     data: {
         newMess : "",
+        searchEntry : "",
+        hidden : false,
         // botAnsw : [],
         allChats : [
             {
@@ -206,16 +208,16 @@ const wazzuppo = new Vue ({
         botMess (position) {
             this.newMess="";
             let botAnsw = [
-                "Forse volevi una parola palindroma: Omordotuanuoraoarounautodromo.", "Va bene...", "Mai una gioia.", "Cosa hai scritto?", "In che senso?", "Comunque è sempre colpa della lobby delle farmacie.", "Va bene Ciccio, ci becchiamo!", "42", "Ehm... forse.", "Sì, certo, ti faccio sapere.", "No, non ho sorelle o amiche da presentarti", "Mmmmhh...", "Ahahahah. No.", "Aahahahh!!!", "Ma sono giaponese!", "Ora devo andare!", "Ci sentiamo dopo!", "No", "Non credo :)", "Ok", "Vai avanti", "No ma fai pure", "Non è divertente,", "Ciao", "Ciao Giorgio", "Bene. Tu invece come stai?", "Bene anche te e famiglia"
+                "Forse volevi una parola palindroma: Omordotuanuoraoarounautodromo.", "Va bene...", "Mai una gioia.", "Cosa hai scritto?", "In che senso?", "Comunque è sempre colpa della lobby delle farmacie.", "Va bene Ciccio, ci becchiamo!", "42", "Ehm... forse.", "Sì, certo, ti faccio sapere.", "No, non ho sorelle o amiche da presentarti", "Mmmmhh...", "Ahahahah. No.", "Aahahahh!!!", "Ma sono giaponese!", "Ora devo andare!", "Ci sentiamo dopo!", "No", "Non credo :)", "Ok", "Vai avanti", "No ma fai pure", "Non è divertente,", "Ciao", "Ciao Giorgio", "Bene. Tu invece come stai?", "Bene anche te e famiglia", "Ciaooo!", "Salve!", "Bella!", "Oggi il cane si è pulito il culo in cucina... un macello.", "Speriamo che non piova", "Non dirlo", "Che stanchezza", "Essere famosi è faticoso.", "Voglio uscireee!"
             ];
 
-            let ranNum = Math.floor(Math.random()*27);
+            let ranNum = Math.floor(Math.random()*36);
 
             console.log(botAnsw[ranNum]);
 
             let botAnswer = {
-                dateMess : "now",
-                timeMess : "now",
+                dateMess : this.getDate(),
+                timeMess : this.getHour(),
                 message : botAnsw[ranNum],
                 statusMess : "received"
             };
@@ -232,8 +234,8 @@ const wazzuppo = new Vue ({
         addMess (position) {
             
             let addingMess = {
-                dateMess : "now",
-                timeMess : "now",
+                dateMess : this.getDate(),
+                timeMess : this.getHour(),
                 message : this.newMess,
                 statusMess : "sent"
             };
@@ -246,7 +248,60 @@ const wazzuppo = new Vue ({
                 this.botMess(position);
                 
             }
+        },
+        getDate () {
+            const d = new Date();
+            let today = d.toLocaleDateString();
+            return today
+        },
+        getHour () {
+            const t = new Date();
+            let now = t.toLocaleTimeString();
+            return now
+        },
+        filterChats () {
+            console.log(this.searchEntry);
+            if (this.searchEntry.trim()=="") {
+                
+            }
+            else {
+
+                for (let index = 0; index < this.allChats.length; index++) {
+                    // const element = allChats[index];
+
+                    let mydiv = document.getElementById(this.allChats[index].contactName).style.display= "none";
+
+                    let show = this.allChats[index].contactName.search(this.searchEntry);
+                    
+                    console.log(show);
+                    
+                    // if (show = -1) {
+                        
+                    // }
+                    // else {
+                    //     mydiv = document.getElementById(this.allChats[index].contactName).style.display= "flex";
+
+                    // }
+
+                    // .style.display= "none";
+                }
+                // console.log(element);
+                // let hidden = true;
+
+            }
         }
     }
 })
 
+// for each in cui trovo gli elementi contactName
+// aggiungo la classe hidden ai row dei contatti
+// eseguo un altro ciclo per ogni lettera del nome
+
+// string.search(searchValue)
+
+// controllo se quella lettera è nel searchEntry (index?)
+// se è contenuta almeno una lettera tolgo la classe hidden
+// se non c'è nessuna corrispondenza aggiungo la classe hidden
+// se entry torna vuoto tolgo tutte le classi hidden
+
+// created() {}
