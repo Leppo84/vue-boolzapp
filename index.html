@@ -50,7 +50,7 @@
             </div>
             <!-- contacts list -->
             <div class="scroll v-container">
-                <div v-for="(contact, index) in allChats" :id="contact.contactName" class="row j-between" :class="hidden === true ? 'hidden' : ''"  :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
+                <div v-for="(contact, index) in allChats" :id="contact.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
                     
                     <div class="box align-center">
                         <img :src="`img/Avatar${contact.avatar}.jpg`" :alt="contact.contactName" class="avatar">
