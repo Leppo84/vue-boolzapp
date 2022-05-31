@@ -20,8 +20,8 @@
 <body>
     <main id="uozzap">
         <aside class="v-container">
-            <div class="row j-between center bg-grey">
-                <div class="box">
+            <div class="row j-between align-center bg-grey">
+                <div class="box align-center">
                     <img src="img/Avatar_01.jpg" alt="Your Avatar" class="avatar-sm">
                     <b>Giorgio</b>
                 </div>
@@ -31,8 +31,8 @@
                     <i class="icon-a fas fa-ellipsis-v"></i>
                 </div>
             </div>
-            <div class="row bg-notif center">
-                <div class=" box avatar bg-white center j-center">
+            <div class="row bg-notif align-center">
+                <div class=" box avatar bg-white align-center j-center">
                     <i class=" col-notif fas fa-bell-slash"></i>
                 </div>
                 <div>
@@ -42,157 +42,84 @@
                 </div>
             </div>
             <div class="row border-bottom">
-                <div class="bar-container ">
+                <div class="bar-container">
                     <i class="fa fa-search searchIcon"></i>
                     <input id="search-bar" type="search" name="search" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
             <!-- contacts list -->
             <div class="scroll v-container">
-                {{allChats.avatar}}
-                <div v-for="(chat, index) in allChats" :id="chat.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
-                    <div class="box">
-                        <img :src="`img/Avatar${chat.avatar}.jpg`" :alt="chat.contactName" class="avatar">
+                <div v-for="(contact, index) in allChats" :id="contact.contactName" class="row j-between" :class="allChats[index].active === true ? 'bg-active' : ''" @click="changeContact(index)" :key="index">
+                    
+                    <div class="box align-center">
+                        <img :src="`img/Avatar${contact.avatar}.jpg`" :alt="contact.contactName" class="avatar">
                         <div>
-                            <b>{{chat.contactName}}</b>
+                            <b>{{contact.contactName}}</b>
                             <br>
-                            <span v-for="chat in allChats.messages" class="txt-lightgrey">{{chat.messages}}</span>
+                            <span v-for="(last, key) in contact.messages" :key="key" v-if="key == contact.messages.length - 1" class="txt-lightgrey">{{last.message}}</span>
                         </div>
                     </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12:00</span>
+                    <div v-for="(lasttime, baby) in contact.messages" :key="baby" class="box align-start ">
+                        <span v-if="baby == contact.messages.length - 1" class="txt-lightgrey">{{lasttime.dateMess}}</span>
                     </div>
                 </div>
-                <!-- <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_03.jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Bruce</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div>
-                <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_04.jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Murphy</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div>
-                <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_05..jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Daria</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div>
-                <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_06.jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Goku</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div>
-                <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_07.jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Anakin</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div>
-                <div class="row j-between border-bottom">
-                    <div class="box">
-                        <img src="img/Avatar_08.jpg" alt="Your Avatar" class="avatar">
-                        <div>
-                            <b>Sarah</b>
-                            <br>
-                            <span class="txt-lightgrey">ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="box align-start ">
-                        <span class="txt-lightgrey">ore 12,00</span>
-                    </div>
-                </div> -->
             </div>
         </aside>
         <!-- chat -->
-        <section class="v-container chat-board">
-            <div class="row j-between center bg-grey">
-                <div class="box">
-                    <img src="img/Avatar_02.jpg" alt="Tony" class="avatar-sm">
-                    <div>
-                        <b>Tony</b>
-                        <br>
-                        <span class="txt-lightgrey">ultimo accesso ieri</span>
+        <section class="chat-board">
+            <div v-for="(chat, j) in allChats" :key="j" v-if="chat.active === false" class="empty">
+            </div>
+            <div v-else class="v-container">
+                <div class="row j-between align-center bg-grey">
+                    <div class="box">
+                        <img :src="`img/Avatar${chat.avatar}.jpg`" alt="chat.contactName" class="avatar-sm">
+                        <div>
+                            <b>{{chat.contactName}}</b>
+                            <br>
+                            <span class="txt-lightgrey">ultimo accesso non si sa</span>
+                        </div>
+                    </div>
+                    <div class="box">                 
+                        <i class="icon-a fa fa-search"></i>
+                        <i class="icon-a fas fa-paperclip"></i>
+                        <i class="icon-a fas fa-ellipsis-v"></i>
                     </div>
                 </div>
-                <div class="box">                 
-                    <i class="icon-a fa fa-search"></i>
-                    <i class="icon-a fas fa-paperclip"></i>
-                    <i class="icon-a fas fa-ellipsis-v"></i>
-                </div>
-            </div>
-            <!-- MESSAGGI -->
-            <div v-for="(chat, j) in allChats" class="wall scroll" :key="j">
-                <div v-for="(mess, k) in chat.messages" :class="mess.statusMess === 'sent' ? 'box j-end' : 'box j-start'" class="" :key="k">
-                    <span :class="mess.statusMess === 'sent' ? 'sent-baloon' : 'received-baloon'">
-                        <span>
-                            {{mess.message}}
+                <!-- MESSAGGI -->
+                <div  class="wall scroll v-container">
+                    <div v-for="(mess, k) in chat.messages" :class="mess.statusMess === 'sent' ? 'box j-end' : 'box j-start'" class="" :key="k">
+                        <span :class="mess.statusMess === 'sent' ? 'sent-baloon' : 'received-baloon'">
+                            <span>
+                                {{mess.message}}
+                            </span>
+                            <span class="time-txt txt-lightgrey">{{mess.timeMess}}</span>
                         </span>
-                        <span class="time-txt txt-lightgrey">{{mess.timeMess}}</span>
-                    </span>
-                </div>
-                <!-- <div class="box j-start">
-                    <span class="received-baloon">
-                        <span>
-                            ciao
+                    </div>
+                    <!-- <div class="box j-start">
+                        <span class="received-baloon">
+                            <span>
+                                ciao
+                            </span>
+                            <span class="time-txt txt-lightgrey">12,00</span>
                         </span>
-                        <span class="time-txt txt-lightgrey">12,00</span>
-                    </span>
-                </div>
-                <div class="box j-end">
-                    <span class="sent-baloon">
-                        <span>
-                            Come stai?
+                    </div>
+                    <div class="box j-end">
+                        <span class="sent-baloon">
+                            <span>
+                                Come stai?
+                            </span>
+                            <span class="time-txt txt-lightgrey">12,00</span>
                         </span>
-                        <span class="time-txt txt-lightgrey">12,00</span>
-                    </span>
-                </div> -->
-            </div>
-            <div class="row j-between center bg-grey">
-                <i class="icon-b far fa-smile"></i>
-                <div class="bar-container ">
-                    <input id="message-bar" type="text" name="text" placeholder="Scrivi un messaggio">
+                    </div> -->
                 </div>
-                <i class="icon-b fas fa-microphone"></i>
+                <div class="row j-between align-center c-end bg-grey">
+                    <i class="icon-b far fa-smile"></i>
+                    <div class="bar-container ">
+                        <input id="message-bar" type="text" name="text" placeholder="Scrivi un messaggio">
+                    </div>
+                    <i class="icon-b fas fa-microphone"></i>
+                </div>
+
             </div>
 
         </section>

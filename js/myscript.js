@@ -5,20 +5,23 @@ const wazzuppo = new Vue ({
             {
                 contactName : "Tony",
                 avatar : "_02",
-                active: true,
+                active: false,
                 messages : [
                     {
-                        timeMess : "10/01/2022 15:30",
+                        dateMess : "10/01/2022",
+                        timeMess : "15:30",
                         message : "Ciao Tony, non mi hai più detto niente per la pentola a pressione.",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "10/01/2022 15:52",
+                        dateMess : "10/01/2022",
+                        timeMess : "15:52",
                         message : "Ti trovi bene?",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "10/01/2022 16:15",
+                        dateMess : "10/01/2022",
+                        timeMess : "16:15",
                         message : "Sì, bene. Ci cuciniamo di tutto!",
                         statusMess : "received"
                     }
@@ -28,20 +31,23 @@ const wazzuppo = new Vue ({
             {
                 contactName : "Bruce",
                 avatar : "_03",
-                active : false,
+                active : true,
                 messages : [
                     {
-                        timeMess : "12/02/2022 4:30",
-                        message : "Giorgio! alla Bat-bike non va più lo scimano.",
+                        dateMess : "12/02/2022",
+                        timeMess : "4:30",
+                        message : "Giorgio! Sulla Bat-bike non va più lo scimano.",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "12/02/2022 7:52",
+                        dateMess : "12/02/2022",
+                        timeMess : "7:52",
                         message : "Ma come? Non è che hai scarrellato?",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "13/02/2022 00:15",
+                        dateMess : "13/02/2022",
+                        timeMess : "00:15",
                         message : "No, ma tutto a posto, ci ha pensato Alfred",
                         statusMess : "received"
                     }
@@ -54,17 +60,20 @@ const wazzuppo = new Vue ({
                 active : false,
                 messages : [
                     {
-                        timeMess : "01/01/2022 00:07",
+                        dateMess : "01/01/2022",
+                        timeMess : "00:07",
                         message : "Buonanno Giorgio! Rispetta la legge!",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "01/01/2022 00:52",
+                        dateMess : "01/01/2022",
+                        timeMess : "00:52",
                         message : "Grande Robocop! Auguroniii!!!",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "01/01/2022 00:56",
+                        dateMess : "01/01/2022",
+                        timeMess : "00:56",
                         message : "Anche a te e famiglia.",
                         statusMess : "received"
                     }
@@ -77,12 +86,14 @@ const wazzuppo = new Vue ({
                 active : false,
                 messages : [
                     {
-                        timeMess : "16/03/2022 22:07",
+                        dateMess : "16/03/2022",
+                        timeMess : "22:07",
                         message : "Ciao, mi sa che non riesco a passare... perdnami, saluta gli altri!",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "16/03/2022 22:14",
+                        dateMess : "16/03/2022",
+                        timeMess : "22:14",
                         message : "Non preoccuparti, recupereremo. A presto!",
                         statusMess : "sent"
                     }
@@ -94,27 +105,32 @@ const wazzuppo = new Vue ({
                 active : false,
                 messages : [
                     {
-                        timeMess : "15/05/2022 14:07",
+                        dateMess : "15/05/2022",
+                        timeMess : "14:07",
                         message : "Uei Giorgione! Questa volta ti iscrivi alla partita? ne manca uno!",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "15/05/2022 16:52",
+                        dateMess : "15/05/2022",
+                        timeMess : "16:52",
                         message : "No, mi spiace, non riesco nemmeno questo martedì. Ho Mondialcasa.",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "16/05/2022 14:56",
+                        dateMess : "16/05/2022",
+                        timeMess : "14:56",
                         message : "Accidenti ho dovuto chiamare Vegeta... vabbè",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "16/05/2022 15:01",
+                        dateMess : "16/05/2022",
+                        timeMess : "15:01",
                         message : "Ahahah, vabbè dai. Invece la finale la guardiamo?",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "16/05/2022 15:07",
+                        dateMess : "16/05/2022",
+                        timeMess : "15:07",
                         message : "Ancora non lo so, non credo.",
                         statusMess : "received"
                     }
@@ -126,27 +142,32 @@ const wazzuppo = new Vue ({
                 active : false,
                 messages : [
                     {
-                        timeMess : "28/05/2022 11:52",
+                        dateMess : "28/05/2022",
+                        timeMess : "11:52",
                         message : "L'hai vista?",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "28/05/2022 12:06",
+                        dateMess : "28/05/2022",
+                        timeMess : "12:06",
                         message : "Sì, poi ne parliamo.",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "28/05/2022 12:07",
+                        dateMess : "28/05/2022",
+                        timeMess : "12:07",
                         message : "Comunque bisogna aspettare le altre.",
                         statusMess : "sent"
                     },
                     {
-                        timeMess : "28/05/2022 15:12",
+                        dateMess : "28/05/2022",
+                        timeMess : "15:12",
                         message : "Grande Evan McGregor. Le prossime le vediamo assieme.",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "28/05/2022 15:38",
+                        dateMess : "28/05/2022",
+                        timeMess : "15:38",
                         message : "Dai, perchè no. :)",
                         statusMess : "sent"
                     },
@@ -158,12 +179,14 @@ const wazzuppo = new Vue ({
                 active : false,
                 messages : [
                     {
-                        timeMess : "04/07/2019 21:37",
+                        dateMess : "04/07/2019",
+                        timeMess : "21:37",
                         message : "Ciao ancora, che buffo beccarci così. A presto",
                         statusMess : "received"
                     },
                     {
-                        timeMess : "4/07/2019 21:49",
+                        dateMess : "4/07/2019 ",
+                        timeMess : "1:49",
                         message : "Sì, bello. Alla prossima rimpatriata!",
                         statusMess : "sent"
                     }
@@ -172,6 +195,12 @@ const wazzuppo = new Vue ({
         ]
     },
     methods : {
+        changeContact (position) {
+            this.allChats.forEach(chat => {
+                chat.active=false;                
+            });
+            this.allChats[position].active = true;
+        }
 
     }
 })
