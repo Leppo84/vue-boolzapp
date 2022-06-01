@@ -225,15 +225,24 @@ const wazzuppo = new Vue ({
             setTimeout(() => {
 
                 this.allChats[position].messages.push(botAnswer);
-
-                const scroll = document.querySelector("#wall");
-                scroll.scrollTop = scroll.scrollHeight;                
-                
+                              
             }, 3000);
+
+            setTimeout(() => {
+                
+                
+                const scroll = document.querySelector("#wall");
+                
+                scroll.scrollTo({ top: 90000, behavior: 'smooth' })
+
+
+                // scroll.scrollTop =scroll.scrollHeight;
+                // console.log(scroll.scrollHeight);
+                
+            }, 3020);
             
             
-        },
-        
+        },        
         addMess (position) {
             
             let addingMess = {
@@ -248,12 +257,16 @@ const wazzuppo = new Vue ({
             }
             else {
                 this.allChats[position].messages.push(addingMess);
-                // this.newMess="";
                 this.botMess(position);
             }
 
-            const scroll = document.querySelector("#wall");
-            scroll.scrollTop = scroll.scrollHeight;
+            setTimeout(() => {
+
+                const scroll = document.querySelector("#wall");
+                
+                scroll.scrollTo({ top: 90000, behavior: 'smooth' })
+                
+            }, 20);
 
         },
         getDate () {
@@ -267,34 +280,37 @@ const wazzuppo = new Vue ({
             now = now.slice(0,5);
             return now
         },
+        // pageScroll() {
+
+        //     window.scrollBy(0,1);
+        
+        //     scrolldelay = setTimeout(pageScroll,10);
+        
+        // },
         filterChats () {
-            // console.log(this.searchEntry);
 
             for (let index = 0; index < this.allChats.length; index++) {
 
+                let mydiv = document.getElementById(this.allChats[index].contactName);
+
                 if (this.searchEntry.trim()=="") {
 
-                    document.getElementById(this.allChats[index].contactName).style.display= "flex";
+                    mydiv.style.display= "flex";
                     
                 }
                 else {
                     
-                    document.getElementById(this.allChats[index].contactName).style.display= "none";
+                    mydiv.style.display= "none";
                    
                     let entry = this.searchEntry.toLowerCase().trim();
 
                     let contact = this.allChats[index].contactName.toLowerCase().trim();
                     
-                    let these = contact.includes(entry);
-                    let that = contact.search(entry);
+                    let match = contact.includes(entry);
                     
-                    console.log(entry);
-                    console.log(contact);
-                    console.log(these, that);
-                    
-                    if (these == true | that !== -1 ) {
+                    if (match == true) {
 
-                        document.getElementById(this.allChats[index].contactName).style.display= "flex";
+                        mydiv.style.display= "flex";
                         
                     }
                 }
